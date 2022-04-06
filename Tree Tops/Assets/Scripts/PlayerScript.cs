@@ -55,12 +55,20 @@ public class PlayerScript : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        bool playerHorizontalMove = Mathf.Abs(playerRB.velocity.y) > 0;
+        //bool playerHorizontalMove = Mathf.Abs(playerRB.velocity.y) > 0;
 
-        if (playerHorizontalMove)
+        bool playerHorizontalMove = false;
+        if (Mathf.Abs(controlThrow) > 0)
         {
-            AnimationChange(playerHorizontalMove);
+            playerHorizontalMove = true;
         }
+        else
+        {
+            playerHorizontalMove = false;
+        }
+
+         AnimationChange(playerHorizontalMove);
+        
     }
 
     private void AnimationChange(bool playerHorizontalMove)
@@ -73,11 +81,14 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
+            playerAnimator.SetBool("CanJump", true);
             bool IsTouchingGround = playerCollider.IsTouchingLayers(LayerMask.GetMask("Foreground"));
             if (IsTouchingGround)
             {
                 Vector2 JumpVelocity = new Vector2(0, JumpSpeed);
                 playerRB.velocity += JumpVelocity;
+                playerAnimator.SetBool("CanJump", false);
+
             }
         }
     }

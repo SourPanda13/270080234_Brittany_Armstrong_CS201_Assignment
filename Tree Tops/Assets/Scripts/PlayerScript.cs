@@ -87,9 +87,13 @@ public class PlayerScript : MonoBehaviour
             {
                 Vector2 JumpVelocity = new Vector2(0, JumpSpeed);
                 playerRB.velocity += JumpVelocity;
-                playerAnimator.SetBool("CanJump", false);
+                //playerAnimator.SetBool("CanJump", false);
 
             }
+        }
+        else
+        {
+            playerAnimator.SetBool("CanJump", false);
         }
     }
 

@@ -11,8 +11,8 @@ public class PlayerScript : MonoBehaviour
 
     [HideInInspector] public int AcornsCollected = 0;
 
-    float PlayerSpeed = 40000;
-    float JumpSpeed = 5;
+    float PlayerSpeed = 10000;
+    float JumpSpeed = 15;
     int Life = 3;
     bool IsAlive = true;
 
